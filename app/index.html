@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Neon Coast — GTA-style Cover Maker</title>
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-mark">NC</span>
+    <div>
+      <h1>Neon Coast Cover Studio</h1>
+      <p>Turn your photos into a multi-panel sunset poster — offline, in your browser.</p>
+    </div>
+  </div>
+  <p id="status" class="status" role="status">Load a photo to begin.</p>
+</header>
+
+<main class="studio">
+  <aside class="panel controls" aria-label="Cover controls">
+    <section>
+      <h2>Photos</h2>
+      <p class="hint">Up to three photos from your machine. They never leave it.</p>
+      <div class="photo-slots" id="photoSlots"></div>
+      <div class="sample-row">
+        <button type="button" id="useSamples">Try the sample photos</button>
+      </div>
+    </section>
+
+    <section>
+      <h2>Layout</h2>
+      <div class="picker" id="layoutPicker"></div>
+    </section>
+
+    <section>
+      <h2>Panels</h2>
+      <p class="hint">Click a panel on the cover to select it, then drag it to pan. Assign a photo and zoom below.</p>
+      <div class="panel-thumbs" id="panelThumbs"></div>
+      <label class="row">Photo for panel
+        <select id="panelPhoto"></select>
+      </label>
+      <label class="row">Zoom
+        <input id="panelZoom" type="range" min="100" max="300" value="100">
+        <span id="zoomValue">100%</span>
+      </label>
+      <div class="row buttons">
+        <button type="button" id="zoomOut">−</button>
+        <button type="button" id="zoomIn">+</button>
+        <button type="button" id="resetPanel">Reset panel</button>
+      </div>
+    </section>
+
+    <section>
+      <h2>Colour grade</h2>
+      <div class="picker" id="gradePicker"></div>
+      <label class="check"><input id="grain" type="checkbox" checked> Film grain</label>
+      <label class="check"><input id="vignette" type="checkbox" checked> Vignette</label>
+    </section>
+
+    <section>
+      <h2>Lettering</h2>
+      <label class="row">Title
+        <input id="title" type="text" maxlength="28" value="NEON COAST">
+      </label>
+      <label class="row">Subtitle
+        <input id="subtitle" type="text" maxlength="48" value="vice nights, golden days">
+      </label>
+      <label class="row">Title size
+        <input id="titleSize" type="range" min="60" max="140" value="100">
+        <span id="titleSizeValue">100%</span>
+      </label>
+      <label class="row">Title position
+        <select id="titlePos">
+          <option value="bottom" selected>Bottom</option>
+          <option value="top">Top</option>
+        </select>
+      </label>
+      <label class="check"><input id="outline" type="checkbox" checked> Heavy outline</label>
+      <label class="check"><input id="showSubtitle" type="checkbox" checked> Neon subtitle</label>
+    </section>
+
+    <section>
+      <h2>Export</h2>
+      <label class="row">Canvas size
+        <select id="canvasSize">
+          <option value="1080x1080" selected>Square · 1080 × 1080</option>
+          <option value="1080x1350">Portrait · 1080 × 1350</option>
+          <option value="1920x1080">Wide · 1920 × 1080</option>
+        </select>
+      </label>
+      <div class="export-grid">
+        <button type="button" id="exportSquare">PNG · 1080×1080</button>
+        <button type="button" id="exportPortrait">PNG · 1080×1350</button>
+        <button type="button" id="exportWide">PNG · 1920×1080</button>
+        <button type="button" id="exportAll" class="primary">Export all three</button>
+      </div>
+    </section>
+  </aside>
+
+  <section class="stage" aria-label="Cover preview">
+    <div class="canvas-wrap">
+      <canvas id="cover" width="1080" height="1080" aria-label="Cover preview"></canvas>
+    </div>
+    <p class="hint">Drag on the cover to pan the selected panel · scroll to zoom it · click a panel to select it.</p>
+  </section>
+</main>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
